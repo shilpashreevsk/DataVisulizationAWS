@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 4-Data visualization of the result set</title>
+</head>
+<body>
+<div class="container">
+    <label><b><u> Shilpa Shree</u></b></label>&nbsp&nbsp&nbsp&nbsp&nbsp	<label><b><u>1001540443</u></b></label>	<br><br>	
+
+    <label><b>Bar PLot</b></label>
+    <form action="/barplotting" method="post" enctype="multipart/form-data">
+        Enter the max count :
+        <input type="text" placeholder="Max number" name="max" required>
+        <input type="submit" value="plottings"> 
+    </form>
+	
+	<label><b>Pie PLot</b></label>
+    <form action="/pieplotting" method="post" enctype="multipart/form-data">
+        Enter the max count :
+        <input type="text" placeholder="Max number" name="max" required>
+        <input type="submit" value="plottings">
+    </form>
+	
+	<label><b>Horizontal Bar PLot</b></label>
+    <form action="/multibar" method="post" enctype="multipart/form-data">
+        Enter the max count :
+        <input type="text" placeholder="Max number" name="max" required>
+        <input type="submit" value="plottings"> 
+    </form>
+
+    <label><b>Line Chart</b></label>
+    <form id="sqlrestriclatlong" action="/sqlrestriclatlong" method="POST">
+         Lat: <input type="text" name="val1" >
+         lat: <input type="text" name="val2" >
+         log: <input type="text" name="val3" >
+		 log: <input type="text" name="val4" >
+        <input type="submit" name="execute" value="execute" ><br><br>
+    </form>
+	
+	 <label><b>Upload:</b></label>
+    <form id="formUpload" action="/csv_upload" enctype="multipart/form-data" method="post">
+    <p class='description'></p> Please upload your documents here:<br><input type = "file" name="file_upload"><input type="submit" value="Submit" id="submit_file"><br>
+    <br> Count: {{ count }} time: {{ rdstime0 }} </br>
+    </form>
+	
+</div>
+</body>
+</body>
+</html>

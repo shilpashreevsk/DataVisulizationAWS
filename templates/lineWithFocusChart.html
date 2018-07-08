@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+
+    <style>
+        text {
+            font: 12px sans-serif;
+        }
+        svg {
+            display: block;
+        }
+        html, body, #chart, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chart" class='with-3d-shadow with-transitions'>
+    <svg></svg>
+</div>
+
+<script>
+     var zipped_data= {{x1}}
+     var x2 = {{x2|tojson}}
+     var x3= {{x3|tojson}}
+     var abc ='';
+     var dataset = [];
+
+     for(i=0;i<zipped_data.length;i++)
+             {
+                dataset.push({"y":x2[i], "x":x3[i], "z": zipped_data[i]})
+             }
+
+	var dataset2=[];	
+	dataset2.push({"key":"products", "values":dataset});
+	
+    nv.addGraph(function() {
+        var chart = nv.models.lineWithFocusChart();
+
+        chart.brushExtent([50,70]);
+
+        chart.xAxis.tickFormat(d3.format(',10'));
+        chart.focusHeight(50 + 20);
+        chart.focusMargin({ "bottom": 20 + 20 });
+        chart.x2Axis.tickFormat(d3.format('40,50'));
+        chart.yAxis.tickFormat(d3.format('-122,-118'));
+        chart.y2Axis.tickFormat(d3.format(-118,function(d){return d.y}));
+        chart.useInteractiveGuideline(true);
+	chart.interactiveLayer.tooltip.contentGenerator(function(d){console.log(d);return "<h1>"+d.series[0].data.z+"<h1>";});
+        d3.select('#chart svg')
+            .datum(dataset2)
+            .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+    });
+
+</script>
+</body>
+</html>
