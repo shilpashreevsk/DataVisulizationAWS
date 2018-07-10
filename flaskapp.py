@@ -6,16 +6,16 @@ import sys, csv
 import pymysql
 from werkzeug.utils import secure_filename
 #global file_name
-ACCESS_KEY_ID = 'AKIAJSGMTKP4JEI7NJBA'
-ACCESS_SECRET_KEY = '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'
-BUCKET_NAME = 'shilpashree-s3'
+ACCESS_KEY_ID = ''
+ACCESS_SECRET_KEY = ''
+BUCKET_NAME = 's3'
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 hostname = 'picturealbumdb.cckoj3pyomxt.us-east-2.rds.amazonaws.com'
-username = 'shilpa'
-password = 'admin123'
-database = 'PictureAlbumDB'
+username = ''
+password = ''
+database = ''
 myConnection = pymysql.connect( host=hostname, user=username, passwd=password, db=database, autocommit = True, cursorclass=pymysql.cursors.DictCursor, local_infile=True)
 
 print "Database Connected"
